@@ -3,7 +3,7 @@ Contributors: GhozyLab
 Donate link: https://ghozy.link/rs3bq
 Tags: slider, image slider, carousel, photo slider, slideshow
 Requires at least: 3.5
-Tested up to: 6.6
+Tested up to: 6.7
 Stable tag: 1.1.127
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

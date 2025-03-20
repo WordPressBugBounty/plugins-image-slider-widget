@@ -3,7 +3,7 @@
 Plugin Name: Image Slider (Lite)
 Plugin URI: https://ghozylab.com/plugins/
 Description: Image Slider (Lite) - Displaying your image as slider in post/page/widget/sidebar area with very easy.<a href="https://demo.ghozylab.com/plugins/easy-image-slider-plugin/pricing/" target="_blank"><strong> Upgrade to Pro Version Now</strong></a> and get a tons of awesome features.
-Author: Image Slider Team - GhozyLab
+Author: PT. GHOZY LAB LLC
 Text Domain: image-slider-widget
 Domain Path: /languages
 Version: 1.1.127
