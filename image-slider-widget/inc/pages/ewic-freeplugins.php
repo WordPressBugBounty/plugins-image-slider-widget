@@ -342,7 +342,7 @@ $.fn.ewicReOrder = function(array) {
 
 jQuery(document).ready(function($) {
 	
-	var ewicList = ['page-builder-wp', 'easy-media-gallery', 'contact-form-lite', 'feed-instagram-lite', 'image-slider-widget', 'gallery-lightbox-slider', 'image-carousel','icon', 'easy-notify-lite'];
+	var ewicList = ['luvre', 'page-builder-wp', 'easy-media-gallery', 'contact-form-lite', 'feed-instagram-lite', 'image-slider-widget', 'gallery-lightbox-slider', 'image-carousel','icon', 'easy-notify-lite'];
 	
 	$('#the-list').ewicReOrder(ewicList);
 	
