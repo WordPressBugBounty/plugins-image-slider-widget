@@ -40,20 +40,23 @@ if ( ! class_exists( 'Ewic_Block' ) ) {
             wp_register_script(
                 $script_slug, // Handle.
                 plugin_dir_url( __FILE__ ).'/dist/blocks.build.js', // Block.build.js: We register the block here. Built with Webpack.
-                array( 'wp-blocks', 'wp-i18n', 'wp-element' ) // Dependencies, defined above.
+                array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
+                defined( 'EWIC_VERSION' ) ? EWIC_VERSION : false
             );
 
             // Styles.
             wp_register_style(
                 $style_slug, // Handle.
                 plugin_dir_url( __FILE__ ).'/dist/blocks.style.build.css', // Block style CSS.
-                array( 'wp-blocks' ) // Dependency to include the CSS after it.
+                array(), // Dependency to include the CSS after it.
+                defined( 'EWIC_VERSION' ) ? EWIC_VERSION : false
             );
 
             wp_register_style(
                 $editor_style_slug, // Handle.
                 plugin_dir_url( __FILE__ ).'/dist/blocks.editor.build.css', // Block editor CSS.
-                array( 'wp-edit-blocks' ) // Dependency to include the CSS after it.
+                array( 'wp-edit-blocks', 'dashicons' ), // Dependency to include the CSS after it.
+                defined( 'EWIC_VERSION' ) ? EWIC_VERSION : false
             );
 
             register_block_type(

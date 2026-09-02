@@ -140,12 +140,34 @@ color: #FFF !important;
             transform:rotate(3deg);
 }
 
-.ewic-container-cnt .plugin-card {
-    border: 1px solid #d7d7d7 !important;
+.ewic-container-cnt #the-list,
+#the-list {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 20px;
 }
 
-.ewic-container-cnt .plugin-card-bottom {
-    border-top: 1px solid #c2c2c2 !important;
+.ewic-container-cnt .plugin-card,
+.plugin-card {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin: 0 !important;
+	float: none !important;
+	border: 1px solid #d7d7d7 !important;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.ewic-container-cnt .plugin-card-top,
+.plugin-card-top {
+	min-height: 180px !important;
+}
+
+.ewic-container-cnt .plugin-card-bottom,
+.plugin-card-bottom {
+	border-top: 1px solid #c2c2c2 !important;
 	background-color: #efefef !important;
 }
 
@@ -158,7 +180,19 @@ body.rtl .ewic-container-cnt .plugin-card-top .column-description {
 	margin-left: auto;
 }
 
-		
+@media screen and (max-width: 1200px) {
+	.ewic-container-cnt #the-list,
+	#the-list {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media screen and (max-width: 782px) {
+	.ewic-container-cnt #the-list,
+	#the-list {
+		grid-template-columns: 1fr;
+	}
+}
         </style>
 
 <div style="margin-top:30px;" class="wp-list-table widefat plugin-install">

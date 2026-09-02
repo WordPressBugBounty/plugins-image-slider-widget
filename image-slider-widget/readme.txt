@@ -1,10 +1,10 @@
- === Image Slider ===
+=== Image Slider ===
 Contributors: GhozyLab
 Donate link: https://ghozy.link/rs3bq
 Tags: slider, image slider, carousel, photo slider, slideshow
 Requires at least: 3.5
-Tested up to: 6.9
-Stable tag: 1.1.127
+Tested up to: 7.1
+Stable tag: 1.1.129
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -195,10 +195,15 @@ There are no complicated instructions for using Image Slider plugin because this
 
 == Upgrade Notice ==
 
-= 1.1.127 =
+= 1.1.129 =
 IMPORTANT! SECURITY BUGS FIX, PLEASE UPDATE NOW!
 
 == Changelog ==
+
+= 1.1.129 =
+
+* Update : WordPress 7.1 compatibility
+* Fixed : Many other PHP and CSS clean and optimization
 
 = 1.1.127 =
 * Update : IMPORTANT! SECURITY BUGS FIX, PLEASE UPDATE NOW!

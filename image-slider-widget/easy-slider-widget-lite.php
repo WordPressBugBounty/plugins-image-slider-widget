@@ -6,7 +6,7 @@ Description: Image Slider (Lite) - Displaying your image as slider in post/page/
 Author: PT. GHOZY LAB LLC
 Text Domain: image-slider-widget
 Domain Path: /languages
-Version: 1.1.127
+Version: 1.1.129
 Author URI: https://ghozylab.com/
  */
 
@@ -50,7 +50,7 @@ if ( ! defined( 'EWIC_PLUGIN_SLUG' ) ) {
 
 // Plugin Version
 if ( ! defined( 'EWIC_VERSION' ) ) {
-    define( 'EWIC_VERSION', '1.1.127' );
+    define( 'EWIC_VERSION', '1.1.129' );
 }
 
 // Plugin Name
