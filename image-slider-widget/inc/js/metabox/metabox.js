@@ -211,6 +211,12 @@ jQuery(document).ready(function($) {
 
     });
 
+    // Initialize saved thumbnail view mode safely
+    var savedMode = $('#image_list_mode').val();
+    if (savedMode === 'ewiclist' || savedMode === 'ewicgrid') {
+        $('#' + savedMode).trigger('click');
+    }
+
 });
 
 /* IntroJS */

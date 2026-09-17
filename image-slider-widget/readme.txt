@@ -4,7 +4,7 @@ Donate link: https://ghozy.link/rs3bq
 Tags: slider, image slider, carousel, photo slider, slideshow
 Requires at least: 3.5
 Tested up to: 7.1
-Stable tag: 1.1.129
+Stable tag: 1.1.130
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -195,10 +195,14 @@ There are no complicated instructions for using Image Slider plugin because this
 
 == Upgrade Notice ==
 
-= 1.1.129 =
+= 1.1.130 =
 IMPORTANT! SECURITY BUGS FIX, PLEASE UPDATE NOW!
 
 == Changelog ==
+
+= 1.1.130 =
+
+* Fixed : Security BUGS FIX reported by Patchstack ( [2026-09-18] )
 
 = 1.1.129 =
 

@@ -30,7 +30,7 @@ function ewic_load_script() {
 			wp_enqueue_script( 'ewic-ibutton-js', plugins_url( 'js/jquery/jquery.ibutton.js' , __FILE__ ) );
 			wp_enqueue_style( 'ewic-ibutton-css', plugins_url( 'css/ibutton.css' , __FILE__ ), false, EWIC_VERSION );
 			wp_enqueue_style( 'ewic-metacss', plugins_url( 'css/metabox'.$is_rtl.'.css' , __FILE__ ), false, '' );
-			wp_enqueue_script( 'ewic-metascript', plugins_url( 'js/metabox/metabox.js' , __FILE__ ) );
+			wp_enqueue_script( 'ewic-metascript', plugins_url( 'js/metabox/metabox.js' , __FILE__ ), array( 'jquery' ), EWIC_VERSION );
 			wp_enqueue_style( 'ewic-sldr' );	
 			wp_enqueue_style( 'ewic-colorpicker' );		
 			wp_enqueue_style( 'ewic-introcss' );	
@@ -194,27 +194,12 @@ function ewic_create_meta_box( $post, $meta_box )
 						}
 				} else {echo '<div class="noimgs ewic_noimgs"><span>No images...</span></div>';}
 				
-				echo '<input type="hidden" id="image_list_mode" name="ewic_meta[ewic_meta_list_mode]" value="'.esc_attr( get_post_meta( $post->ID, 'ewic_meta_list_mode', true ) ).'" />';
+				$list_mode = get_post_meta( $post->ID, 'ewic_meta_list_mode', true );
+				$list_mode = in_array( $list_mode, array( 'ewiclist', 'ewicgrid' ), true ) ? $list_mode : '';
+
+				echo '<input type="hidden" id="image_list_mode" name="ewic_meta[ewic_meta_list_mode]" value="'.esc_attr( $list_mode ).'" />';
 
 				echo '</ul></div></td>';
-				
-				if ( get_post_meta( $post->ID, 'ewic_meta_list_mode', true ) ) {
-				
-	?>	
-    
-				  <script type="text/javascript">
-				  /*<![CDATA[*/
-				  
-				 jQuery(document).ready(function($) {
-					 
-					 jQuery('#<?php echo get_post_meta( $post->ID, 'ewic_meta_list_mode', true );?>').trigger('click');
-					 
-				  });				
-
-				  /*]]>*/
-                  </script> <?php
-				  
-				}
 				
 				break;	
 	
@@ -575,7 +560,11 @@ function ewic_save_meta_box( $post_id ) {
 			
 			else {
 				
-				$tags = sanitize_text_field( $_POST['ewic_meta'][$key] );
+				if ( 'ewic_meta_list_mode' === $key ) {
+					$tags = in_array( $val, array( 'ewiclist', 'ewicgrid' ), true ) ? $val : 'ewicgrid';
+				} else {
+					$tags = sanitize_text_field( $_POST['ewic_meta'][$key] );
+				}
 				
 			}
 			
@@ -586,6 +575,35 @@ function ewic_save_meta_box( $post_id ) {
 		
 }
 add_action( 'save_post', 'ewic_save_meta_box' );
+
+/**
+ * Sanitize ewic_meta_list_mode post meta to prevent raw storage via XML-RPC, REST API, or core handlers.
+ *
+ * @param mixed  $meta_value
+ * @param string $meta_key
+ * @param string $object_type
+ * @return string
+ */
+function ewic_sanitize_list_mode_meta( $meta_value, $meta_key = '', $object_type = '' ) {
+	return in_array( $meta_value, array( 'ewiclist', 'ewicgrid' ), true ) ? $meta_value : 'ewicgrid';
+}
+add_filter( 'sanitize_post_meta_ewic_meta_list_mode', 'ewic_sanitize_list_mode_meta', 10, 3 );
+
+/**
+ * Protect internal plugin meta keys from arbitrary modification via XML-RPC custom_fields.
+ *
+ * @param bool   $protected
+ * @param string $meta_key
+ * @param string $meta_type
+ * @return bool
+ */
+function ewic_protect_custom_meta( $protected, $meta_key, $meta_type = '' ) {
+	if ( 'ewic_meta_list_mode' === $meta_key ) {
+		return true;
+	}
+	return $protected;
+}
+add_filter( 'is_protected_meta', 'ewic_protect_custom_meta', 10, 3 );
 
 
 function ewic_upgrade_popup() {
